@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Algorithm Sorting Visualizer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-8">
+        <header class="mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-800 mb-2">Sorting Algorithm Visualizer</h1>
+            <p class="text-gray-500">Visualize algorithms calculated by the Python Backend.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+            <!-- Algorithm Selection -->
+            <div id="algo-selector" class="lg:col-span-1 p-4 bg-gray-50 rounded-lg shadow-inner">
+                <h3 class="font-bold text-lg text-gray-700 mb-3">1. Select Algorithm</h3>
+                <div class="flex flex-col space-y-2">
+                    <button data-algo="BubbleSort" class="algo-btn active bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">Bubble Sort</button>
+                    <button data-algo="MergeSort" class="algo-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">Merge Sort</button>
+                    <button data-algo="QuickSort" class="algo-btn bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">Quick Sort</button>
+                </div>
+            </div>
+
+            <!-- Main Controls and Status -->
+            <div class="lg:col-span-3 p-4 bg-gray-50 rounded-lg shadow-inner flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-lg text-gray-700 mb-3">2. Controls & Status</h3>
+                    <div class="flex space-x-3 mb-4">
+                        <button id="generate-array-btn"
+                                class="w-1/2 bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md">
+                            Generate New Array (50 Bars)
+                        </button>
+                        <button id="start-sort-btn"
+                                class="w-1/2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md disabled:opacity-50"
+                                disabled>
+                            Start Bubble Sort
+                        </button>
+                    </div>
+                </div>
+                <div id="status-message" class="text-center py-2 text-sm font-medium text-gray-600 bg-white rounded-md border border-gray-200">
+                    Click "Generate New Array" to begin.
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison/Stats Panel -->
+        <div id="stats-panel" class="bg-indigo-50 p-4 rounded-lg mb-6 border-indigo-200 border-2">
+            <h3 class="font-bold text-xl text-indigo-800 mb-2">Algorithm Comparison Data</h3>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div class="p-2 border-r">
+                    <p class="text-sm text-indigo-600">Time Complexity (Worst)</p>
+                    <p id="time-complexity" class="font-extrabold text-gray-800 text-lg">O(N²)</p>
+                </div>
+                <div class="p-2 border-r">
+                    <p class="text-sm text-indigo-600">Space Complexity</p>
+                    <p id="space-complexity" class="font-extrabold text-gray-800 text-lg">O(1)</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-sm text-indigo-600">Simulated Time Taken</p>
+                    <p id="time-taken" class="font-extrabold text-gray-800 text-lg">--- ms</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Array Visualization Container -->
+        <div id="array-container" class="border border-gray-200 rounded-lg min-h-[30vh]"></div>
+
+        <p class="mt-4 text-xs text-gray-400 text-center">
+            Note: Running with Python backend at http://localhost:8080/sort.
+        </p>
+    </div>
+
+    <!-- Link external JS -->
+    <script src="script.js"></script>
+</body>
+</html>
